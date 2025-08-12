@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->string('answer');
-            $table->foreignId('bidang_id')->constrained()->onDelete('cascade');
-            $table->foreignId('layanan_id')->constrained()->onDelete('cascade');
+            $table->foreignId('bidang_id')->constrained()->onDelete('restrict');
+            $table->foreignId('layanan_id')->constrained()->onDelete('restrict');
             $table->timestamps();
         });
     }

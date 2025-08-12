@@ -7,9 +7,13 @@
         <h1>Manajemen Data Bidang</h1>
         <p>Di halaman ini, Anda dapat menambah, mengubah, dan menghapus data bidang.</p>
         
-        <button class="btn btn-primary mb-3">Tambah Bidang Baru</button>
+        <a href="{{ route('bidang.create') }}" class="btn btn-primary mb-3">Tambah Bidang Baru</a>
 
-        <table class="table table-bordered">
+        @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -20,15 +24,20 @@
             </thead>
             <tbody>
                 {{-- Data akan ditampilkan di sini menggunakan @foreach --}}
-                <tr>
-                    <td>1</td>
-                    <td>Bidang Teknologi Informasi</td>
-                    <td>Mengelola semua hal terkait TI.</td>
+                @foreach ($bidangs as $bidang)
+                    <tr>
+                    <td></td>
+                    <td>Bidang {{ $bidang->nama_bidang }}</td>
+                    <td>{{ $bidang->deskripsi }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{{ route('bidang.edit', $bidang) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('bidang.destroy', $bidang) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus data ini?');">
+                            @csrf @method('DELETE')
                         <button class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

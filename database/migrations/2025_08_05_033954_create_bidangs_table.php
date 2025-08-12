@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bidangs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_bidang');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }

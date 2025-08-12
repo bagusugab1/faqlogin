@@ -33,6 +33,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
     // --- Grup Rute HANYA untuk SUPER ADMIN ---
     // Rute di dalam grup ini hanya bisa diakses oleh user dengan role 'super_admin'.
     Route::middleware(['role:super_admin'])->group(function () {
