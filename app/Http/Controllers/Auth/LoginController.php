@@ -18,10 +18,9 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    // Memproses data login
+    // Memvalidasi login
     public function login(Request $request)
     {
-        // Validasi input
         $credentials = $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -31,7 +30,6 @@ class LoginController extends Controller
         if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
 
-            // Redirect ke halaman yang dituju sebelumnya atau ke dashboard
             return redirect()->intended(route('admin.dashboard'));
         }
 
@@ -49,6 +47,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

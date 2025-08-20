@@ -28,7 +28,8 @@
                 <option value="super_admin">Super Admin</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

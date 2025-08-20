@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
-            $table->string('answer');
+            $table->string('pertanyaan');
+            $table->string('jawaban');
             $table->foreignId('bidang_id')->constrained()->onDelete('restrict');
             $table->foreignId('layanan_id')->constrained()->onDelete('restrict');
             $table->timestamps();

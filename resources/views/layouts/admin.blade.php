@@ -66,10 +66,10 @@
         @if (auth()->user()->role == 'super_admin')
             <a href="{{ route('users.index') }}"><i class="fas fa-users"></i> Kelola User</a>
             <a href="{{ route('bidang.index') }}"><i class="fas fa-building"></i> Kelola Bidang</a>
-            <a href="{{ route('layanan.index') }}"><i class="fas fa-concierge-bell"></i> Kelola Layanan</a>
-            <a href="{{ route('faq.index') }}"><i class="fas fa-question-circle"></i> Kelola FAQ</a>
         @endif
         @if (auth()->user()->role == 'admin_bidang')
+            <a href="{{ route('layanan.index') }}"><i class="fas fa-concierge-bell"></i> Kelola Layanan</a>
+            <a href="{{ route('faq.index') }}"><i class="fas fa-question-circle"></i> Kelola FAQ</a>
             <a href="{{ route('admin.masukan.index') }}"><i class="fas fa-inbox fa-fw"></i> Masukan Pengguna</a>
         @endif
     </div>
@@ -92,8 +92,9 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
+                                    <button type="submit" class="dropdown-item"><i class="fa-solid fa-power-off"></i> Logout</button>
                                 </form>
+                                <a href="#" class="dropdown-item"><i class="fa-solid fa-circle-user"></i> Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -107,6 +108,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('scripts')
     
     <script>
         // Menunggu sampai seluruh dokumen HTML selesai dimuat

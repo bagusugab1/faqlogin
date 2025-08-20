@@ -1,3 +1,16 @@
+@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap");
+:root {
+    --maroon-main: #800000;
+    --maroon-accent: #ae2012;
+    --secondary-color: #5c1007;
+    --text-color: #ffffff;
+
+    /* Font Text */
+    --logo-font: "Archivo Black", sans-serif;
+    --font-default: "arial", sans-serif;
+    --font-tittle: "Trykker", serif;
+}
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +20,8 @@
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #abb8f5 0%, #764ba2 100%);
+    color: white;
+    background: var(--maroon-main);
     min-height: 100vh;
 }
 
@@ -19,12 +32,12 @@ body {
 }
 
 header {
-    background-color: #9163f4;
-    padding: 1rem 0;
+    background: var(--secondary-color);
+    padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
 }
 
 .header-content {
@@ -36,7 +49,7 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 4rem;
 }
 
 .logo-icon {
@@ -52,23 +65,30 @@ header {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .logo-icon img {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    margin-right: 5px;
+    width: 150px;
+    height: 60px;
+    border-radius: 7px;
     object-fit: cover;
 }
 
 .logo-text h1 {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
+    color: #ffc107;
+    font-family: var(--logo-font);
+    font-size: 1rem;
+    font-weight: 1000;
 }
 
 .logo-text p {
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
     font-size: 0.9rem;
+    font-family: var(--font-default);
 }
-
+.logo-text span {
+    font-family: poppins, sans-serif;
+    color: #ffc107;
+    font-weight: 600;
+}
 .hero {
     text-align: center;
     padding: 4rem 0;
@@ -76,7 +96,8 @@ header {
 }
 
 .hero h2 {
-    font-size: 3rem;
+    font-size: 2rem;
+    font-family: var(--logo-font);
     margin-bottom: 1rem;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1s ease-out;
@@ -84,6 +105,7 @@ header {
 
 .hero p {
     font-size: 1.2rem;
+    font-family: var(--font-default);
     opacity: 0.9;
     max-width: 600px;
     margin: 0 auto 2rem;
@@ -121,7 +143,7 @@ header {
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: #ab4e1c;
     border: none;
     width: 40px;
     height: 40px;
@@ -137,35 +159,56 @@ header {
 }
 
 .main-content {
-    background: white;
     margin: 2rem 0;
     border-radius: 20px;
+    background-color: var(--maroon-accent);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     animation: fadeInUp 1s ease-out 0.6s both;
 }
 
 .content-header {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: var(--text-color);
     padding: 2rem;
     text-align: center;
 }
 
 .content-header h3 {
+    font-family: var(--logo-font);
+    text-shadow: #000 0px 4px 10px;
     font-size: 2rem;
     margin-bottom: 0.5rem;
 }
-
+.content-header p {
+    font-family: var(--font-default);
+    text-shadow: #000 0px 4px 10px;
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
 .categories {
     display: block;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem;
 }
-
+.deskripsi-container {
+    display: flex;
+    align-items: center; /* Tengah vertikal */
+    gap: 100px; /* Jarak antara gambar dan deskripsi */
+    margin: 0;
+    padding: 20px;
+}
+.deskripsi-container img {
+    margin-inline-end: 5rem;
+    width: 200px; /* Atur lebar gambar */
+    height: auto; /* Biarkan tinggi otomatis */
+    border-radius: 10px; /* Tambahkan border-radius untuk efek melengkung */
+}
 .category-card {
-    background: linear-gradient(135deg, #f8f9ff, #e8eeff);
+    background: white;
+    color: #000;
     border-radius: 15px;
     margin-top: 1rem;
     padding: 1.5rem;
@@ -175,7 +218,10 @@ header {
     position: relative;
     overflow: hidden;
 }
-
+a {
+    text-decoration: none;
+    color: inherit;
+}
 .category-card::before {
     content: "";
     position: absolute;
@@ -205,8 +251,6 @@ header {
 .category-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
 }
 
 .category-icon {
@@ -222,9 +266,10 @@ header {
 }
 
 .category-title {
-    font-size: 1.3rem;
+    font-family: var(--font-tittle);
+    font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: #000000;
 }
 
 .faq-list {
@@ -279,8 +324,8 @@ header {
 }
 
 .contact-section {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    background: rgb(207, 210, 210);
+    color: black;
     padding: 3rem 0;
     text-align: center;
 }
@@ -293,8 +338,8 @@ header {
 }
 
 .contact-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(67, 52, 52, 0.276);
+    backdrop-filter: blur(400px);
     border-radius: 15px;
     padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -317,7 +362,139 @@ footer {
     text-align: center;
     padding: 2rem 0;
 }
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--maroon-accent);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 3rem auto;
+    max-width: 50rem;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
 
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h1 {
+    font-family: var(--logo-font);
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.886) 0px 4px 10px;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-header p {
+    font-family: var(--font-default);
+    text-shadow: 0px 4px 10px rgb(0, 0, 0);
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    text-align: start;
+    display: block;
+    color: #000000;
+    font-family: var(--font-default);
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 10px 30px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #d9dcd6;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.success-message {
+    display: none;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .logo-icon img {
+        margin-right: 16rem;
+    }
+    .logo-text {
+        display: none;
+    }
+    .form-container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .form-header h1 {
+        font-size: 24px;
+    }
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;

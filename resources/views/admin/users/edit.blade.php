@@ -1,0 +1,61 @@
+@extends('layouts.admin')
+@section('title', 'Edit User')
+@section('content')
+<div class="container-fluid">
+    <h1>Edit User: {{ $user->name }}</h1>
+
+    <form action="{{ route('users.update', $user) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        {{-- Nama --}}
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama</label>
+            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" required>
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Username --}}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" required>
+            @error('username')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        
+        {{-- Role --}}
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select name="role" id="role" class="form-select @error('role') is-invalid @enderror" required>
+                <option value="super_admin" {{ old('role', $user->role) == 'super_admin' ? 'selected' : '' }}>Super Admin</option>
+                <option value="admin_bidang" {{ old('role', $user->role) == 'admin_bidang' ? 'selected' : '' }}>Admin Bidang</option>
+            </select>
+            @error('role')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Password (Opsional) --}}
+        <hr>
+        <p class="text-muted">Kosongkan password jika tidak ingin mengubahnya.</p>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password Baru</label>
+            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
+            @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="password_confirmation" class="form-label">Konfirmasi Password Baru</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update User</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Batal</a>
+    </form>
+</div>
+@endsection

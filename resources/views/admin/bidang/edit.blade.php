@@ -15,6 +15,7 @@
             <textarea name="deskripsi" class="form-control">{{ $bidang->deskripsi }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ route('bidang.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

@@ -8,12 +8,10 @@ use App\Http\Controllers\Admin\BidangController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MasukanController;
-
+use App\Http\Controllers\PublicController;
 
 // Rute untuk halaman utama
-Route::get('/', function () {
-    return view('template');
-});
+Route::get('/', [PublicController::class, 'index'])->name('homepage');
 
 // === RUTE OTENTIKASI (LOGIN & LOGOUT) ===
 // Rute-rute ini dapat diakses oleh siapa saja (publik).
@@ -42,8 +40,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         // index, create, store, show, edit, update, destroy.
         Route::resource('users', UserController::class);
         Route::resource('bidang', BidangController::class);
-        Route::resource('layanan', LayananController::class);
-        Route::resource('faq', FaqController::class);
+        
     });
 
     // --- Grup Rute HANYA untuk ADMIN BIDANG ---
@@ -51,5 +48,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::middleware(['role:admin_bidang'])->prefix('admin')->group(function () {
         // Menggunakan resource akan otomatis membuat rute untuk index, show, destroy, dll.
         Route::resource('masukan', MasukanController::class)->names('admin.masukan');
+        Route::resource('layanan', LayananController::class);
+        Route::resource('faq', FaqController::class);
     });
 });
